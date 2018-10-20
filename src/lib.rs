@@ -71,7 +71,7 @@ pub struct FullViewingKey<E: JubjubEngine> {
 }
 
 impl<E: JubjubEngine> ExpandedSpendingKey<E> {
-    fn from_spending_key(sk: &[u8]) -> Self {
+    pub fn from_spending_key(sk: &[u8]) -> Self {
         let ask = E::Fs::to_uniform(prf_expand(sk, &[0x00]).as_bytes());
         let nsk = E::Fs::to_uniform(prf_expand(sk, &[0x01]).as_bytes());
         let mut ovk = OutgoingViewingKey([0u8; 32]);
