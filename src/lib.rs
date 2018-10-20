@@ -46,7 +46,7 @@ fn prf_expand_vec(sk: &[u8], ts: &[&[u8]]) -> Blake2bResult {
 
 /// An outgoing viewing key
 #[derive(Clone, Copy, PartialEq)]
-struct OutgoingViewingKey([u8; 32]);
+pub struct OutgoingViewingKey([u8; 32]);
 
 impl OutgoingViewingKey {
     fn derive_child(&self, i_l: &[u8]) -> Self {
@@ -59,9 +59,9 @@ impl OutgoingViewingKey {
 /// A Sapling expanded spending key
 #[derive(Clone)]
 pub struct ExpandedSpendingKey<E: JubjubEngine> {
-    ask: E::Fs,
-    nsk: E::Fs,
-    ovk: OutgoingViewingKey,
+    pub ask: E::Fs,
+    pub nsk: E::Fs,
+    pub ovk: OutgoingViewingKey,
 }
 
 /// A Sapling full viewing key
